@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#070b12" />
+  <title>FC NOVA — Mobile Football</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23c8ff2e'/%3E%3Cpath d='M32 10l18 10v16c0 11-8 17-18 20-10-3-18-9-18-20V20z' fill='%23070b12'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-family='Arial' font-weight='bold' font-size='24' fill='%23c8ff2e'%3EN%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="assets/fonts/fonts.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <svg class="svg-defs" aria-hidden="true">
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V21h-6v-6H9v6H3z"/></symbol>
+    <symbol id="i-squad" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6z"/><circle cx="17.5" cy="9" r="2.4"/><path d="M15 14.4c3.4-.3 6.5 1.8 6.5 5.1h-5"/></symbol>
+    <symbol id="i-store" viewBox="0 0 24 24"><path d="M4 8h16l1.5 12h-19z"/><path d="M8 8V6a4 4 0 0 1 8 0v2"/><path d="M9 12v1.5a3 3 0 0 0 6 0V12"/></symbol>
+    <symbol id="i-profile" viewBox="0 0 24 24"><path d="M5 21h14M6 21V8l6-4 6 4v13"/><path d="M10 21v-5h4v5"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.5 20 12 7 19.5z"/></symbol>
+    <symbol id="i-coin" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 6.5v11M9.5 9h5M9.5 15h5"/></symbol>
+    <symbol id="i-gem" viewBox="0 0 24 24"><path d="m12 2 8 7-8 13L4 9z"/><path d="M4 9h16M12 2v20"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M5 5l14 14M19 5 5 19"/></symbol>
+    <symbol id="i-sound" viewBox="0 0 24 24"><path d="M3 9h4l5-4v14l-5-4H3z"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8 8 0 0 1 0 12"/></symbol>
+    <symbol id="i-mute" viewBox="0 0 24 24"><path d="M3 9h4l5-4v14l-5-4H3z"/><path d="M16 9l5 6M21 9l-5 6"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><path d="M7 4h3v16H7zM14 4h3v16h-3z"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 4 14h6l-1 8 9-12h-6z"/></symbol>
+    <symbol id="i-trophy" viewBox="0 0 24 24"><path d="M7 3h10v5a5 5 0 0 1-10 0z"/><path d="M7 5H3v2a4 4 0 0 0 4 4M17 5h4v2a4 4 0 0 1-4 4M12 13v5M8 21h8M9 18h6"/></symbol>
+    <symbol id="i-ball" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m12 7 4 3-1.5 4.5h-5L8 10z"/><path d="M12 3v4M4.3 9.5 8 10M6.5 19l3.5-4.5M17.5 19 14 14.5M19.7 9.5 16 10"/></symbol>
+    <symbol id="i-chev" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m4 12.5 5 5L20 6.5"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 2 21 6v7c0 5-4 8-9 9-5-1-9-4-9-9V6z"/></symbol>
+  </svg>
+
+  <div id="app">
+    <header class="topbar">
+      <button class="brand" data-nav="home" aria-label="FC Nova">
+        <span class="brand-mark">N</span>
+        <span class="brand-text">FC<span>NOVA</span><em>MOBILE</em></span>
+      </button>
+      <div class="resources">
+        <div class="res-pill"><svg class="ico"><use href="#i-coin"/></svg><b id="res-coins">0</b><button class="res-add" id="daily-btn" title="Thưởng hàng ngày">+</button></div>
+        <div class="res-pill"><svg class="ico gem"><use href="#i-gem"/></svg><b id="res-gems">0</b></div>
+        <button class="sound-toggle" id="sound-toggle" aria-label="Âm thanh"><svg class="ico"><use href="#i-sound"/></svg></button>
+      </div>
+    </header>
+
+    <main id="screens">
+      <section class="screen active" id="screen-home" data-screen="home">
+        <div class="home-hero">
+          <div class="hero-glow"></div>
+          <div class="hero-copy">
+            <div class="eyebrow"><span class="live-dot"></span> MÙA GIẢI 26 · SẴN SÀNG</div>
+            <h1>BƯỚC RA<br><em>SÂN CỎ.</em></h1>
+            <p>Xây dựng đội hình trong mơ, chinh phục đấu trường và ghi dấu tên bạn trên bảng vàng.</p>
+            <div class="hero-actions">
+              <button class="btn btn-primary btn-lg" id="hero-play"><svg class="ico"><use href="#i-play"/></svg> ĐÁ NHANH</button>
+              <button class="btn btn-ghost" data-nav="squad">ĐỘI HÌNH <svg class="ico"><use href="#i-chev"/></svg></button>
+            </div>
+            <div class="hero-stats">
+              <div><b id="hero-ovr">--</b><span>OVR</span></div>
+              <div><b id="hero-record">0-0-0</b><span>THẮNG-HÒA-THUA</span></div>
+              <div><b id="hero-trophies">0</b><span>CÚP</span></div>
+            </div>
+          </div>
+          <div class="hero-card-wrap">
+            <div class="card-glow"></div>
+            <div class="hero-card-ghost g1"></div>
+            <div class="hero-card-ghost g2"></div>
+            <div id="hero-card"></div>
+          </div>
+        </div>
+
+        <div class="home-grid">
+          <div class="panel mode-panel">
+            <div class="panel-head"><span class="slash"></span><h2>ĐẤU TRƯỜNG</h2></div>
+            <button class="mode-card mode-quick" id="quick-match">
+              <div class="mode-art"><svg class="ico"><use href="#i-ball"/></svg></div>
+              <div class="mode-info">
+                <span class="tag">QUICK MATCH</span>
+                <h3>ĐÁ NHANH</h3>
+                <p>Chọn đối thủ, vào sân và chơi ngay.</p>
+              </div>
+              <span class="mode-go"><svg class="ico"><use href="#i-chev"/></svg></span>
+            </button>
+            <button class="mode-card mode-cup" id="cup-match">
+              <div class="mode-art"><svg class="ico"><use href="#i-trophy"/></svg></div>
+              <div class="mode-info">
+                <span class="tag">GIẢI ĐẤU</span>
+                <h3>CÚP NOVA</h3>
+                <p>3 trận loại trực tiếp. Vô địch nhận 5.000 xu.</p>
+              </div>
+              <span class="mode-go"><svg class="ico"><use href="#i-chev"/></svg></span>
+            </button>
+            <div class="daily-strip">
+              <div class="daily-icon"><svg class="ico"><use href="#i-coin"/></svg></div>
+              <div><b>Thưởng điểm danh</b><span>Nhận 750 xu mỗi ngày</span></div>
+              <button class="btn btn-mini" id="daily-claim">NHẬN</button>
+            </div>
+          </div>
+
+          <div class="panel squad-preview">
+            <div class="panel-head">
+              <span class="slash"></span><h2>ĐỘI HÌNH</h2>
+              <button class="link-btn" data-nav="squad">QUẢN LÝ <svg class="ico"><use href="#i-chev"/></svg></button>
+            </div>
+            <div class="mini-pitch" id="mini-pitch"></div>
+            <div class="mini-meta">
+              <div><small>ĐỘI HÌNH</small><b id="mini-formation">4-3-3</b></div>
+              <div><small>ĐỘ MẠNH</small><b id="mini-ovr">--</b></div>
+              <div><small>CẦU THỦ</small><b id="mini-count">0</b></div>
+            </div>
+          </div>
+
+          <div class="panel store-preview">
+            <div class="panel-head"><span class="slash"></span><h2>CỬA HÀNG</h2><button class="link-btn" data-nav="store">XEM TẤT CẢ <svg class="ico"><use href="#i-chev"/></svg></button></div>
+            <div id="home-pack"></div>
+          </div>
+
+          <div class="panel news-panel">
+            <div class="panel-head"><span class="slash"></span><h2>TIN NÓNG</h2></div>
+            <div class="news-list" id="news-list"></div>
+          </div>
+        </div>
+        <footer class="app-foot">FC NOVA · Trò chơi bóng đá giả lập. Không liên kết với EA SPORTS FC Mobile.</footer>
+      </section>
+
+      <section class="screen" id="screen-squad" data-screen="squad">
+        <div class="screen-head">
+          <div>
+            <div class="eyebrow">PHÒNG THAY ĐỒ</div>
+            <h1>ĐỘI HÌNH</h1>
+          </div>
+          <div class="team-ovr"><small>OVR ĐỘI</small><b id="squad-ovr">--</b></div>
+        </div>
+        <div class="squad-layout">
+          <div class="panel squad-board">
+            <div class="squad-toolbar">
+              <div class="formation-tabs" id="formation-tabs"></div>
+              <button class="btn btn-ghost btn-sm" id="auto-squad">TỰ ĐỘNG CHỌN</button>
+            </div>
+            <div class="pitch-wrap">
+              <div class="pitch" id="squad-pitch">
+                <div class="pitch-lines">
+                  <svg viewBox="0 0 100 140" preserveAspectRatio="none">
+                    <rect x="3" y="3" width="94" height="134" rx="1.5" fill="none" stroke="rgba(255,255,255,.5)" stroke-width=".5"/>
+                    <line x1="3" y1="70" x2="97" y2="70" stroke="rgba(255,255,255,.5)" stroke-width=".5"/>
+                    <circle cx="50" cy="70" r="12" fill="none" stroke="rgba(255,255,255,.5)" stroke-width=".5"/>
+                    <circle cx="50" cy="70" r=".8" fill="rgba(255,255,255,.6)"/>
+                    <rect x="20" y="3" width="60" height="19" fill="none" stroke="rgba(255,255,255,.5)" stroke-width=".5"/>
+                    <rect x="35" y="3" width="30" height="8" fill="none" stroke="rgba(255,255,255,.5)" stroke-width=".5"/>
+                    <rect x="20" y="118" width="60" height="19" fill="none" stroke="rgba(255,255,255,.5)" stroke-width=".5"/>
+                    <rect x="35" y="129" width="30" height="8" fill="none" stroke="rgba(255,255,255,.5)" stroke-width=".5"/>
+                    <path d="M36 22a16 16 0 0 1 28 0" fill="none" stroke="rgba(255,255,255,.5)" stroke-width=".5"/>
+                    <path d="M36 118a16 16 0 0 0 28 0" fill="none" stroke="rgba(255,255,255,.5)" stroke-width=".5"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="pitch-legend"><span><i class="dot lime"></i> Chạm vào cầu thủ để thay đổi</span><span class="muted">Kéo để xem đội hình</span></div>
+          </div>
+          <aside class="panel squad-side">
+            <div class="panel-head"><span class="slash"></span><h2>DANH SÁCH</h2><span class="count-badge" id="squad-count">0</span></div>
+            <div class="squad-summary">
+              <div class="stat-row"><span>Tấn công</span><b id="sum-atk">--</b></div>
+              <div class="stat-row"><span>Kiểm soát</span><b id="sum-mid">--</b></div>
+              <div class="stat-row"><span>Phòng ngự</span><b id="sum-def">--</b></div>
+            </div>
+            <div class="player-list" id="player-list"></div>
+            <button class="btn btn-primary btn-block" id="squad-play"><svg class="ico"><use href="#i-play"/></svg> VÀO TRẬN</button>
+          </aside>
+        </div>
+      </section>
+
+      <section class="screen" id="screen-store" data-screen="store">
+        <div class="screen-head">
+          <div><div class="eyebrow">CHUYỂN NHƯỢNG</div><h1>CỬA HÀNG</h1></div>
+          <div class="store-balance"><small>SỐ DƯ</small><b><svg class="ico"><use href="#i-coin"/></svg><span id="store-coins">0</span></b></div>
+        </div>
+        <div class="pack-feature" id="pack-feature"></div>
+        <div class="pack-grid" id="pack-grid"></div>
+        <div class="store-note">
+          <svg class="ico"><use href="#i-shield"/></svg>
+          <p>Mọi gói cầu thủ đều mở bằng xu kiếm trong game. Không có giao dịch thật. Cầu thủ trong game là hư cấu.</p>
+        </div>
+      </section>
+
+      <section class="screen" id="screen-profile" data-screen="profile">
+        <div class="screen-head">
+          <div><div class="eyebrow">HỒ SƠ HUẤN LUYỆN VIÊN</div><h1>THÀNH TÍCH</h1></div>
+          <div class="level-badge"><b id="profile-level">1</b><span>LEVEL</span></div>
+        </div>
+        <div class="profile-hero panel">
+          <div class="avatar" id="profile-avatar">N</div>
+          <div class="profile-id">
+            <b>HLV NOVA</b>
+            <span>Thành viên từ mùa 26 · <em id="profile-rank">Tân binh</em></span>
+            <div class="xp-bar"><i id="xp-bar"></i></div>
+            <small id="xp-label">0 / 1000 XP</small>
+          </div>
+          <div class="profile-trophy"><svg class="ico"><use href="#i-trophy"/></svg><b id="profile-trophies">0</b><span>CÚP</span></div>
+        </div>
+        <div class="stat-grid">
+          <div class="panel stat-card"><span>SỐ TRẬN</span><b id="stat-matches">0</b><small>Tổng trận đã đấu</small></div>
+          <div class="panel stat-card"><span>THẮNG</span><b id="stat-wins" class="good">0</b><small>Tỉ lệ <em id="stat-wr">0%</em></small></div>
+          <div class="panel stat-card"><span>BÀN THẮNG</span><b id="stat-gf">0</b><small>Bàn thua <em id="stat-ga">0</em></small></div>
+          <div class="panel stat-card"><span>HIỆU SỐ</span><b id="stat-gd">0</b><small>Hiệu số bàn thắng</small></div>
+        </div>
+        <div class="profile-grid">
+          <div class="panel">
+            <div class="panel-head"><span class="slash"></span><h2>THÀNH TỰU</h2></div>
+            <div class="achievements" id="achievements"></div>
+          </div>
+          <div class="panel">
+            <div class="panel-head"><span class="slash"></span><h2>CÀI ĐẶT</h2></div>
+            <div class="settings-list">
+              <button class="setting-row" id="setting-sound"><span><svg class="ico"><use href="#i-sound"/></svg> Âm thanh</span><b id="sound-state">BẬT</b></button>
+              <button class="setting-row" id="setting-reset"><span><svg class="ico"><use href="#i-shield"/></svg> Xóa dữ liệu</span><b class="danger">ĐẶT LẠI</b></button>
+            </div>
+            <p class="fineprint">FC NOVA là game bóng đá arcade một người chơi, lấy cảm hứng từ các tựa game bóng đá di động. Toàn bộ cầu thủ, đội bóng và giải đấu là hư cấu.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <nav class="bottomnav" id="bottomnav">
+      <button class="nav-item active" data-nav="home"><svg class="ico"><use href="#i-home"/></svg><span>SÂN NHÀ</span></button>
+      <button class="nav-item" data-nav="squad"><svg class="ico"><use href="#i-squad"/></svg><span>ĐỘI HÌNH</span></button>
+      <button class="nav-item nav-play" data-nav="play"><span class="nav-play-inner"><svg class="ico"><use href="#i-play"/></svg></span><span>ĐÁ</span></button>
+      <button class="nav-item" data-nav="store"><svg class="ico"><use href="#i-store"/></svg><span>CỬA HÀNG</span></button>
+      <button class="nav-item" data-nav="profile"><svg class="ico"><use href="#i-profile"/></svg><span>HỒ SƠ</span></button>
+    </nav>
+  </div>
+
+  <div id="modal-root" class="modal-root" aria-live="polite"></div>
+  <div id="toast-root" class="toast-root"></div>
+
+  <div id="match-root" class="match-root hidden">
+    <canvas id="pitch-canvas"></canvas>
+    <div class="match-vignette"></div>
+    <div class="match-top">
+      <div class="scoreboard">
+        <div class="score-team home">
+          <span class="crest" id="sb-home-crest">N</span>
+          <span class="score-name" id="sb-home-name">NOVA</span>
+        </div>
+        <div class="score-center">
+          <div class="score-line"><b id="sb-home-score">0</b><i>:</i><b id="sb-away-score">0</b></div>
+          <div class="match-clock" id="match-clock">00:00</div>
+        </div>
+        <div class="score-team away">
+          <span class="score-name" id="sb-away-name">RAVEN</span>
+          <span class="crest away" id="sb-away-crest">R</span>
+        </div>
+      </div>
+      <button class="match-pause" id="match-pause"><svg class="ico"><use href="#i-pause"/></svg></button>
+    </div>
+    <div class="match-banner" id="match-banner"></div>
+    <div class="commentary" id="commentary"></div>
+    <div class="match-bottom">
+      <div class="stick-zone" id="stick-zone">
+        <div class="stick-base"></div>
+        <div class="stick-knob" id="stick-knob"></div>
+      </div>
+      <div class="action-pad">
+        <button class="action-btn small" id="btn-tackle" aria-label="Cướp bóng"><span>CƯỚP</span></button>
+        <button class="action-btn small" id="btn-sprint" aria-label="Tăng tốc"><svg class="ico"><use href="#i-bolt"/></svg><span>TỐC ĐỘ</span></button>
+        <button class="action-btn small pass" id="btn-pass" aria-label="Chuyền bóng"><span>CHUYỀN</span></button>
+        <button class="action-btn shoot" id="btn-shoot" aria-label="Sút bóng"><svg class="ico"><use href="#i-ball"/></svg><span>SÚT</span><i class="charge-ring" id="charge-ring"></i></button>
+      </div>
+    </div>
+    <div class="match-hint" id="match-hint">WASD / phím mũi tên để di chuyển · J chuyền · K sút · Shift tăng tốc · L cướp</div>
+    <div class="stamina-hud"><span>THỂ LỰC</span><i><b id="stamina-bar"></b></i></div>
+    <div class="goal-flash" id="goal-flash"></div>
+    <div class="match-overlay" id="match-overlay"></div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/engine.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
